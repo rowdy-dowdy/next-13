@@ -1,11 +1,4 @@
-import { Roboto } from "@next/font/google";
-import '../globals.css'
-
-const roboto = Roboto({
-  weight: '400'
-})
-
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode

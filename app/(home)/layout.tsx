@@ -1,13 +1,7 @@
 import Menu from '../../components/layout/header'
-import { Roboto } from "@next/font/google";
-import '../globals.css'
 import style from "./page.module.css";
 
-const roboto = Roboto({
-  weight: '400'
-})
-
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode

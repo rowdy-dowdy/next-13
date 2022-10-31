@@ -6,7 +6,7 @@ const roboto = Roboto({
   weight: '400'
 })
 
-const RootLayout = ({ children, }: { children: React.ReactNode }) => {
+export default function RootLayout ({ children, }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={roboto.className}>
       <head>
@@ -18,5 +18,3 @@ const RootLayout = ({ children, }: { children: React.ReactNode }) => {
     </html>
   )
 }
-
-export default RootLayout
