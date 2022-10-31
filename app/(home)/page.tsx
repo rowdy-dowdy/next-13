@@ -10,9 +10,9 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex flex-wrap -mx-4 mt-8">
+        <div className="flex flex-wrap items-stretch -mx-4 mt-8">
           <div className="w-1/3 px-4">
-            <div className="relative bg-rose-500 rounded-lg p-6">
+            <div className="relative h-full bg-rose-500 rounded-lg p-6">
               <div className="absolute w-2/3 top-0 right-0">
                 <div className="icon w-full h-full opacity-30 text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 6">
@@ -23,10 +23,53 @@ export default function Page() {
 
               <div className="relative">
                 <div className="flex justify-between items-center">
-                  <span className="icon rounded w-10 h-10 p-2 bg-black/20 text-white">
+                  <span className="icon rounded-lg w-16 p-2 bg-black/20 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM5 8.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-2zm6 7.5H5v-2h6v2zm8 0h-6v-2h6v2z"></path></svg>
                   </span>
                   <span className="text-sm text-white">Pambayum</span>
+                </div>
+
+                <h5 className="pt-6 text-3xl text-white font-semibold">$280.420</h5>
+                <p className="pt-4 text-gray-200">Remaining money <span className="text-white">Việt Hùng IT</span></p>
+                <p className="pt-4 text-white text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde et harum neque!</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-2/3 px-4">
+            <div className="relative h-full bg-blue-500 rounded-lg p-6">
+              <div className="absolute w-2/3 bottom-0 left-0">
+                <div className="icon w-full h-full opacity-30 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 6">
+                    <path d="M 0 0 L 0 6 L 14 6 C 14 5 9 5 6 4 C 1 2 2 1 0 0"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="relative text-white">
+                <p className="text-sm">Running Event</p>
+
+                <h5 className="pt-6 text-3xl text-white font-semibold">Việt Hùng IT</h5>
+
+                <p className="text-sm pt-4">From 03 April to 02 May, 2022</p>
+
+                <div className="flex space-x-4 mt-4">
+                  <div className="w-1/3 p-4 bg-purple-300/60 rounded-lg">
+                    <h5 className="text-3xl">$42.200</h5>
+                    <p className="text-sm pt-2">Disbursed Budget</p>
+                  </div>
+                  <div className="w-1/3 p-4 bg-green-300/60 rounded-lg">
+                    <h5 className="text-3xl">$32.820</h5>
+                    <p className="text-sm pt-2 flex items-center space-x-2">
+                      <span>Planned</span>
+                      <span className="w-1 h-1 rounded-full bg-white"></span>
+                      <span className="text-green-900">Dvetennted 34%</span>
+                    </p>
+                  </div>
+                  <div className="w-1/3 p-4 bg-orange-300/60 rounded-lg">
+                    <h5 className="text-3xl">$42.200</h5>
+                    <p className="text-sm pt-2">Disbursed Budget</p>
+                  </div>
                 </div>
               </div>
             </div>

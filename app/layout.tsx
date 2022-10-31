@@ -9,11 +9,11 @@ const roboto = Roboto({
 export default function RootLayout ({ children, }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={roboto.className}>
-      <head>
+      <Head>
         <title>Next 13</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </head>
+      </Head>
       <body>{children}</body>
     </html>
   )
