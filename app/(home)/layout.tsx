@@ -1,5 +1,5 @@
 import Menu from '../../components/layout/header'
-import style from "./page.module.css";
+// import style from "./page.module.css";
 
 export default function HomeLayout({
   children,
@@ -12,7 +12,7 @@ export default function HomeLayout({
         <div className="flex w-full h-full">
           <Menu />
           <div className="flex-grow min-w-0">
-            <div className={`w-full h-full shadow ${style.rootLayout}`}>
+            <div className={`w-full h-full shadow`}>
               {children}
             </div>
           </div>

@@ -1,9 +1,50 @@
+// https://dribbble.com/shots/17171504-Project-Management-Dashboard-UI-Concept
+// https://cdn.dribbble.com/userupload/2808504/file/original-8510c515cb64554ca1936d17d88fea25.jpg?compress=1&resize=1024x768
+// "use client";
+import React, { useRef, useEffect, useContext } from "react";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
+import { AuthContext } from "../authContext";
+
+// function useOutsideAlerter(ref: any) {
+//   useEffect(() => {
+//     /**
+//      * Alert if clicked on outside of element
+//      */
+//     function handleClickOutside(event: Event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         alert("You clicked outside of me!");
+//       }
+//     }
+//     // Bind the event listener
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       // Unbind the event listener on clean up
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [ref]);
+// }
+
 export default function Page() {
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
+  // const router = useRouter()
+
+
+  const data = useContext(AuthContext);
+
+  console.log(data)
+  // if (!data?.user) {
+  //   // window.location.href = "/auth/login"
+  //   // router.push('/auth/login')
+  // }
+
   return (
     <div className="flex w-full h-full">
       <div className='flex-grow min-w-0 px-12 py-8'>
         <div className="flex items-center">
-          <h2 className="text-xl font-semibold">Hi Việt Hùng!</h2>
+          <h2 className="text-xl font-semibold">Hi !</h2>
           <div className="ml-auto pl-4 text-sm text-gray-500">15% task completed</div>
           <div className="ml-4 w-32 h-2 rounded-full bg-gray-200 overflow-hidden">
             <div className="h-full bg-rose-500 rounded-full" style={{width: "15%"}}></div>
@@ -11,7 +52,7 @@ export default function Page() {
         </div>
 
         <div className="flex flex-wrap items-stretch -mx-4 mt-8">
-          <div className="w-1/3 px-4">
+          <div className="w-1/3 px-4" >
             <div className="relative h-full bg-rose-500 rounded-lg p-6">
               <div className="absolute w-2/3 top-0 right-0">
                 <div className="icon w-full h-full opacity-30 text-white">

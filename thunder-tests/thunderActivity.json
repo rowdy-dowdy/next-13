@@ -4,11 +4,11 @@
     "colId": "history",
     "containerId": "",
     "name": "https://www.google.com/recaptcha/api/siteverify",
-    "url": "https://www.google.com/recaptcha/api/siteverify",
+    "url": "http://localhost:3000/api/auth/me",
     "method": "POST",
     "sortNum": 0,
     "created": "2022-10-31T03:06:50.434Z",
-    "modified": "2022-10-31T03:06:50.751Z",
+    "modified": "2022-11-02T08:41:43.114Z",
     "headers": [],
     "params": [],
     "tests": []
