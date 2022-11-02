@@ -2,11 +2,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "dev:tailwind": "concurrently 'next dev --turbo' 'npm run tailwind --watch'",
+    "dev:tailwind": "npx concurrently 'next dev --turbo' 'tailwindcss -i styles/globals.css -o styles/dist.css --watch'",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tailwind": "tailwindcss -i styles/globals.css -o styles/dist.css",
+    "tailwind": "tailwindcss -i styles/globals.css -o styles/dist.css --watch",
+    "tailwind:watch": "tailwindcss -i styles/globals.css -o styles/dist.css --watch",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
     "postinstall": "npm run tailwind"
   },
@@ -17,6 +18,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@next/font": "13.0.1",
     "clsx": "1.2.1",
     "concurrently": "7.5.0",
     "next": "latest",
