@@ -8,16 +8,18 @@ import type { User } from "@prisma/client";
 import { setCookie } from "../../../utils/cookies";
 const prisma = new PrismaClient()
 
-type UserWithoutPass = Omit<User, "password">;
+export type TypeUser = Omit<User, "password"> & {
+  password?: String
+};
 
 export default async function handler( req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
       const body = req.body
   
-      let email: string = removeSpace(body.email._value || ''),
-          password: string = body.password._value || '',
-          remember: boolean = body.remember._value || false
+      let email: string = removeSpace(body.email || ''),
+          password: string = body.password || '',
+          remember: boolean = body.remember || false
   
       var user: User | null = await prisma.user.findUnique({
         where: {
@@ -52,7 +54,8 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
         }
       }
   
-      const user_without_password: UserWithoutPass = user
+      var user_without_password: TypeUser  = user
+      delete user_without_password.password
   
       const token = await signToken(user_without_password)
       const refresh_token = await signToken(user_without_password, remember ? '60d' : '1d')
@@ -61,7 +64,7 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
       setCookie(res, 'refresh_token', refresh_token, { maxAge: remember ? 86400 * 60 : 86400, path: '/', httpOnly: true })
       
       res.status(200).json({
-        user_without_password,
+        user: user_without_password,
         expiresIn: '1h',
         token,
         refresh_token
