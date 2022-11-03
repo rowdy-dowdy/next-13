@@ -8,14 +8,6 @@ import type { User } from "@prisma/client";
 import { setCookie } from "../../../utils/cookies";
 const prisma = new PrismaClient()
 
-// type UserCustom = User & {
-//   id: number;
-//   email: string;
-//   password?: string;
-//   name: string;
-//   image: string | null;
-// } | null
-
 type UserWithoutPass = Omit<User, "password">;
 
 export default async function handler( req: NextApiRequest, res: NextApiResponse) {
@@ -80,11 +72,12 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
 
       res.status(e?.status || 500).json({
         status: e?.status || 500,
-        text: e?.status || 500,
+        text: e?.status || "Server Error",
         errors: e?.body_response || []
       })
     }
   } else {
+    res.status(200).json({ message: 'ok' })
     // Handle any other HTTP method
   }
 }
