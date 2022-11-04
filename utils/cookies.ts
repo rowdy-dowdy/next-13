@@ -20,3 +20,27 @@ export const setCookie = (
 
   res.setHeader('Set-Cookie', serialize(name, stringValue, options))
 }
+
+type TypeCookie = {
+  name: string,
+  value: unknown,
+  options: CookieSerializeOptions
+}
+
+export const setCookies = (res: NextApiResponse, list: TypeCookie[]) => {
+  var data: string[] = []
+  list.forEach(v => {
+    const stringValue =
+      typeof v.value === 'object' ? 'j:' + JSON.stringify(v.value) : String(v.value)
+  
+    if (typeof v.options.maxAge === 'number') {
+      v.options.expires = new Date(Date.now() + v.options.maxAge * 1000)
+    }
+
+    data.push(serialize(v.name, stringValue, v.options))
+  })
+
+  // console.log(data)
+
+  res.setHeader('Set-Cookie', data)
+}

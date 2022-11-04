@@ -5,7 +5,7 @@ import { removeSpace } from '../../../utils/validator'
 import { signToken } from '../../../utils/jwt'
 import { PrismaClient } from '@prisma/client'
 import type { User } from "@prisma/client";
-import { setCookie } from "../../../utils/cookies";
+import { setCookies } from "../../../utils/cookies";
 const prisma = new PrismaClient()
 
 export type TypeUser = Omit<User, "password"> & {
@@ -58,10 +58,12 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
       delete user_without_password.password
   
       const token = await signToken(user_without_password)
-      const refresh_token = await signToken(user_without_password, remember ? '60d' : '1d')
+      const refresh_token = await signToken(user_without_password, remember ? 86400 * 60 : 86400)
   
-      setCookie(res, 'token', token, { maxAge: 3600, path: '/', httpOnly: true })
-      setCookie(res, 'refresh_token', refresh_token, { maxAge: remember ? 86400 * 60 : 86400, path: '/', httpOnly: true })
+      setCookies(res, [
+        {name: 'token', value: token, options: { maxAge: 3600, path: '/', httpOnly: true }},
+        {name: 'refresh_token', value: refresh_token, options: { maxAge: remember ? 86400 * 60 : 86400, path: '/', httpOnly: true }}
+      ])
       
       res.status(200).json({
         user: user_without_password,
